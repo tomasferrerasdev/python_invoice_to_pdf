@@ -56,4 +56,16 @@ for filepath in filepaths:
         pdf.cell(30, 8, f'${str(row["price_per_unit"])}', border=1)
         pdf.cell(30, 8, f'${str(row["total_price"])}', border=1, ln=1)
 
+    total_sum = df["total_price"].sum()
+    pdf.set_text_color(80, 80, 80)
+    pdf.cell(30, 8, "", border=1)
+    pdf.cell(70, 8, "", border=1)
+    pdf.cell(30, 8, "", border=1)
+    pdf.cell(30, 8, "", border=1)
+    pdf.cell(30, 8, f"${total_sum}", border=1, ln=1)
+    pdf.ln(10)
+
+    pdf.image("images/amazon_icon.png", w=10)
+    pdf.text(10, 10, "Amazon Inc.")
+
     pdf.output(f"PDFs/{filename}.pdf")
